@@ -4,16 +4,6 @@
 
 #include "MyString.h"
 
-int MyString::str_length(const MyString &str) {
-    int i = 0;
-
-    while(str.content[i] != '\0') {
-        i++;
-    }
-
-    return i;
-}
-
 MyString::MyString(const char* _content) {
     content = (char*) _content;
 }
@@ -52,8 +42,6 @@ char* MyString::toString() const {
 }
 
 void MyString::append(const MyString& toAppend) {
-    const char* appendContent = toAppend.toString();
-
     char* combined = (char*) calloc(toAppend.length() + length(), 2);
     int i = 0;
     while(content[i] != '\0') {
@@ -69,4 +57,15 @@ void MyString::append(const MyString& toAppend) {
     }
 
     this->content = combined;
+}
+
+char MyString::at(int index) const {
+    if(index > length()-1) {
+        return -1;
+    }
+    return content[index];
+}
+
+bool MyString::empty() const {
+    return length() <= 0;
 }

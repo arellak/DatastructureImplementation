@@ -14,13 +14,14 @@ public:
     explicit MyString(const char* _content);
 
     int length() const;
-    static int str_length(const MyString& str);
 
     virtual char* toString() const;
 
     MyString operator+(const MyString& toAdd) const;
-    void append(const MyString& toAppend);
 
+    void append(const MyString& toAppend);
+    char at(int index) const;
+    bool empty() const;
 };
 
 
